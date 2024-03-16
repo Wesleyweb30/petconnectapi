@@ -1,3 +1,8 @@
+![](https://img.shields.io/badge/java_17-✓-green.svg)
+![](https://img.shields.io/badge/spring_boot-✓-green.svg)
+![](https://img.shields.io/badge/Hibernate/JPA-✓-green.svg)
+![](https://img.shields.io/badge/MysqlSQL-✓-green.svg)
+
 # Pet Connect 
   Projeto Java Experience
   
@@ -10,9 +15,10 @@
   Imagine uma plataforma onde seus cães, gatos, coelhos e até mesmo seus pássaros podem se conectar com outros pets, trocar likes e latidos, miados ou até mesmo emojis de patinha. Com o PetConnect, cada membro peludo de sua família encontrará um espaço para expressar sua personalidade única, enquanto você, como dono amoroso, se deleitará com cada momento compartilhado.
   
   Junte-se a nós no PetConnect- onde as pegadas de seus pets deixam marcas digitais de amor e diversão!
-  ## Consumidores da API
-  Como API de exemplo aqui poderá ser consumido por qualquer framework de sua escolha.
-  Exemplo: Angular, React, VueJS, Laravel e outros.
+
+## Consumidores da API
+Como API de exemplo aqui poderá ser consumido por qualquer framework de sua escolha.
+Exemplo: Angular, React, VueJS, Laravel e outros.
 
 ## Por onde começar?
 1° Instalação: <br>
@@ -47,6 +53,6 @@ fazendo com a API
 * Lista de posts do dia <br>
 * Listas de posts do pet <br>
 
-## 
+##  
 MIT © petConnect
 
