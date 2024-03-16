@@ -3,6 +3,7 @@
 ![](https://img.shields.io/badge/Hibernate/JPA-✓-green.svg)
 ![](https://img.shields.io/badge/MysqlSQL-✓-green.svg)
 
+
 # Pet Connect 
   Projeto Java Experience
   
@@ -53,6 +54,6 @@ fazendo com a API
 * Lista de posts do dia <br>
 * Listas de posts do pet <br>
 
-##  
+## Envolvidos   
 MIT © petConnect
 
