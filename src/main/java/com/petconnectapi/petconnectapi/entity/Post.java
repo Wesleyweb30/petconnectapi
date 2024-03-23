@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 @Entity
@@ -25,9 +26,6 @@ public class Post {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate data;
     private Boolean ativo;
-    
-    
-    
-
-
+    @ManyToOne
+    private Pet pet;
 }
