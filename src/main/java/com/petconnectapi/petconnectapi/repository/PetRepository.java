@@ -2,9 +2,9 @@ package com.petconnectapi.petconnectapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.petconnectapi.petconnectapi.entity.Pets;
+import com.petconnectapi.petconnectapi.entity.Pet;
 
 
-public interface PetsRepository extends JpaRepository<Pets, Long> {
+public interface PetRepository extends JpaRepository<Pet, Long> {
     
 }
