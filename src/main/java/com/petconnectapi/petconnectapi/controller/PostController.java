@@ -5,16 +5,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.petconnectapi.petconnectapi.entity.Pet;
 import com.petconnectapi.petconnectapi.entity.Post;
+import com.petconnectapi.petconnectapi.repository.PetRepository;
 import com.petconnectapi.petconnectapi.repository.PostRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/posts")
 public class PostController {
     @Autowired
     private PostRepository postRepository;
+
+
 
     @GetMapping
     public List<Post> getAllPosts() {
@@ -30,7 +35,7 @@ public class PostController {
 
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post post) {
-        Post createdPost = postRepository.save(post);
+        Post createdPost = postRepository.save(post);         
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPost);
     }
 
@@ -56,4 +61,7 @@ public class PostController {
         postRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+
+
 }

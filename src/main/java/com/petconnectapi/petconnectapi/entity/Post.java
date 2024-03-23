@@ -28,4 +28,6 @@ public class Post {
     private Boolean ativo;
     @ManyToOne
     private Pet pet;
+
+    
 }
