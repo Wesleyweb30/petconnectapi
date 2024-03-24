@@ -3,73 +3,52 @@ package com.petconnectapi.petconnectapi.controller;
 import java.util.List;
 import java.util.Optional;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.petconnectapi.petconnectapi.entity.Tutor;
-import com.petconnectapi.petconnectapi.repository.TutorRepository;
+
+import com.petconnectapi.petconnectapi.dto.tutorDTO.TutorRecord;
+import com.petconnectapi.petconnectapi.dto.tutorDTO.TutorSaveRecord;
+import com.petconnectapi.petconnectapi.service.TutorService;
 
 @RestController
 @RequestMapping("/tutores")
 
 public class TutorController {
 
-   
-    @SuppressWarnings("null")
+    @Autowired
+    private TutorService service;
+
+    @GetMapping
+    public List<TutorRecord> findAllTutors() {
+        return service.findAll();
+    }
+
     @PostMapping
-    public ResponseEntity<Tutor> createdTutor(@RequestBody Tutor tutor) {
-         tutor = tutorRepository.save(tutor); 
+    public ResponseEntity<TutorSaveRecord> tutorSave(@RequestBody TutorSaveRecord tutor) {
+        service.tutorSave(tutor);
         return ResponseEntity.ok().body(tutor);
     }
 
-    @GetMapping
-    public List<Tutor> findByAll() {
-        return tutorRepository.findAll();
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<Tutor> findTutorById(@PathVariable("id") long id) {
-        Tutor tutor = tutorRepository.findById(id).orElseThrow(() -> new RuntimeException("tutor não encontrado"));
-        return ResponseEntity.ok(tutor);
-
-    }
-
-    @SuppressWarnings("null")
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTutor(@PathVariable Long id) {
-        tutorRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
-
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Tutor> updateTutor(@PathVariable("id") long id, @RequestBody Tutor tutor) {
-        Optional<Tutor> tutorOpt = tutorRepository.findById(id);
-        if (tutorOpt.isPresent()) {
-            Tutor tutorObj = tutorOpt.get();
-            tutorObj.setTutorName(tutor.getTutorName());
-            tutorObj.setEmail(tutor.getEmail());
-            tutorObj.setCpf(tutor.getCpf());
-            tutorObj.setSex(tutor.getSex());
-            tutorObj.setDtNasc(tutor.getDtNasc());
-            Tutor tutorRes = tutorRepository.save(tutorObj);
-                    
-            
-            return ResponseEntity.ok(tutorRes);
+    public ResponseEntity<TutorRecord> findById(@PathVariable Long id) {
+        Optional<TutorRecord> tutorRecordOptional = service.findById(id);
+        if (tutorRecordOptional.isPresent()) {
+            return ResponseEntity.ok().body(tutorRecordOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
         }
-        return null;       
+    }
 
-}
-
-    @Autowired
-    private TutorRepository tutorRepository;
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        service.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

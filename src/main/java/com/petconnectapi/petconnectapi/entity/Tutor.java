@@ -3,6 +3,7 @@ package com.petconnectapi.petconnectapi.entity;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.petconnectapi.petconnectapi.dto.tutorDTO.TutorSaveRecord;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -42,6 +43,12 @@ public class Tutor {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dtNasc;
     
-
+    public Tutor(TutorSaveRecord tutor){
+        this.tutorName = tutor.tutorName();
+        this.cpf = tutor.cpf();
+        this.email = tutor.email();
+        this.sex = tutor.sex();
+        this.dtNasc = tutor.dtNasc();
+    }
     
 }
